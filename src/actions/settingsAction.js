@@ -4,9 +4,9 @@ import {
   ALLOW_REGISTRATION
 } from "./types";
 
-export const setDisableAllowRegistration = () => {
+export const setAllowRegistration = () => {
   return {
-    type: DISABLE_BALANCE_ON_EDIT
+    type: ALLOW_REGISTRATION
   }
 }
 export const setDisableBalanceOnEdit = () => {
