@@ -1,11 +1,11 @@
-import { createStore, combineReducers, compose} from 'redux';
-import firebase from 'firebase';
-import 'firebase/firestore';
-import { reactReduxFirebase, firebaseReducer} from 'react-redux-firebase';
-import { reduxFirestore, firestoreReducer} from 'redux-firestore';
+import { createStore, combineReducers, compose } from "redux";
+import firebase from "firebase";
+import "firebase/firestore";
+import { reactReduxFirebase, firebaseReducer } from "react-redux-firebase";
+import { reduxFirestore, firestoreReducer } from "redux-firestore";
 //Reducers
-import notifyReducer from './reducers/notifyReducer';
-import settingsReducer from './reducers/settingsReducer';
+import notifyReducer from "./reducers/notifyReducer";
+import settingsReducer from "./reducers/settingsReducer";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHacVzGXswI1eOqe_NNlrBbKAtSVFkqK0",
@@ -15,13 +15,13 @@ const firebaseConfig = {
   storageBucket: "reactclientpanel-ec447.appspot.com",
   messagingSenderId: "705784912381",
   appId: "1:705784912381:web:0c5dc2db7bf1dc70"
-}
+};
 
 //react-redux-firebase config
 const rrfConfig = {
-  userProfile: 'users',
+  userProfile: "users",
   useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
-}
+};
 
 //Init firebase
 firebase.initializeApp(firebaseConfig);
@@ -34,7 +34,7 @@ firebase.initializeApp(firebaseConfig);
 const createStoreWithFirebase = compose(
   reactReduxFirebase(firebase, rrfConfig), // firebase instance as first argument
   reduxFirestore(firebase) // <- needed if using firestore
-)(createStore)
+)(createStore);
 
 // Add firebase to reducers
 const rootReducer = combineReducers({
@@ -42,15 +42,31 @@ const rootReducer = combineReducers({
   firestore: firestoreReducer,
   notify: notifyReducer,
   settings: settingsReducer
-})
+});
 
+//Check for settings in localStorage
+if(localStorage.getItem('settings') == null) {
+  //Default settings
+  const defaultSettings = {
+    disableBalanceOnAdd: true,
+    disableBalanceOnEdit: false,
+    allowRegistration: false
+  }
+
+  //Set to localStorage
+  localStorage.setItem('setting', JSON.stringify(defaultSettings));
+}
 //Create initial state
-const initialState = {};
+const initialState = {settings: JSON.parse(localStorage.getItem('settings'))};
 
 //create store
-const store = createStoreWithFirebase(rootReducer, initialState, compose(
-  reactReduxFirebase(firebase),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-));
+const store = createStoreWithFirebase(
+  rootReducer,
+  initialState,
+  compose(
+    reactReduxFirebase(firebase),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
 export default store;
