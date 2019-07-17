@@ -17,13 +17,13 @@ class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const { firebase, notifyUser } = this.props;
+    const { firebase, notifyUser, history } = this.props;
     const { email, password } = this.state;
 
     firebase.login({
       email,
       password
-    }).catch(err => notifyUser('Invalid Login Credentials', 'error'));
+    }).then(() => history.push("/")).catch(err => notifyUser('Invalid Login Credentials', 'error'));
   }
 
   render() {
