@@ -68,7 +68,6 @@ class ClientDetails extends Component {
       );
     } else balanceForm = null;
 
-    console.log("Client", client);
     if (client) {
       return (
         <div>
