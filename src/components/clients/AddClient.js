@@ -33,7 +33,7 @@ class AddClient extends Component {
   onChange = (e) =>  this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { disableBalanceOnAdd } = this.props.settings;
+    // const { disableBalanceOnAdd } = this.props.settings;
 
     return (
       <div>
@@ -103,7 +103,7 @@ class AddClient extends Component {
                   name="balance"
                   onChange={this.onChange}
                   value={this.state.balance}
-                  disabled={disableBalanceOnAdd}
+                  // disabled={disableBalanceOnAdd}
                 />
               </div>
               <input type="submit" value="Submit" className="btn btn-primary btn-block"/>

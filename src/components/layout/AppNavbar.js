@@ -7,7 +7,7 @@ import { firebaseConnect } from "react-redux-firebase";
 
 class AppNavbar extends Component {
   state = {
-    isAuthenticated: false
+    isAuthenticated: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -64,11 +64,11 @@ class AppNavbar extends Component {
                       {auth.email}
                     </a>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link to="/settings" className="nav-link">
                       Settings
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <a
                       href="#!"

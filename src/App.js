@@ -56,8 +56,8 @@ function App() {
               />
               <Route
                 exact
-                path="/settings"
-                component={UserIsAuthenticated(Settings)}
+                path="/"
+                component={UserIsAuthenticated(Dashboard)}
               />
             </Switch>
           </div>

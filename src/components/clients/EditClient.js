@@ -39,7 +39,7 @@ class EditClient extends Component {
 
   render() {
     const { client } = this.props;
-    const { disableBalanceOnEdit } = this.props.settings;
+    // const { disableBalanceOnEdit } = this.props.settings;
 
     if (client) {
       return (
@@ -110,7 +110,7 @@ class EditClient extends Component {
                   name="balance"
                   ref={this.balanceInput}
                   defaultValue={client.balance}
-                  disabled={disableBalanceOnEdit}
+                  // disabled={disableBalanceOnEdit}
                 />
               </div>
               <input type="submit" value="Submit" className="btn btn-primary btn-block"/>
