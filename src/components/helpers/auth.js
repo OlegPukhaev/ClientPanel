@@ -11,7 +11,8 @@ export const UserIsAuthenticated = connectedRouterRedirect({
   AuthenticatingComponent: LoadingScreen,
   allowRedirectBack: true,
   redirectPath: (state, ownProps) =>
-    locationHelper.getRedirectQueryParam(ownProps) || '/login',
+    // locationHelper.getRedirectQueryParam(ownProps) || '/login',
+    locationHelper.getRedirectQueryParam(ownProps) || '/kazan',//Default redirect to
   authenticatingSelector: ({ firebase: { auth, profile, isInitializing } }) =>
     !auth.isLoaded || isInitializing === true,
   authenticatedSelector: ({ firebase: { auth } }) =>
@@ -23,7 +24,7 @@ export const UserIsNotAuthenticated = connectedRouterRedirect({
   AuthenticatingComponent: LoadingScreen,
   allowRedirectBack: false,
   redirectPath: (state, ownProps) =>
-    locationHelper.getRedirectQueryParam(ownProps) || '/',
+    locationHelper.getRedirectQueryParam(ownProps) || '/kazan',
   authenticatingSelector: ({ firebase: { auth, isInitializing } }) =>
     !auth.isLoaded || isInitializing === true,
   authenticatedSelector: ({ firebase: { auth } }) =>
