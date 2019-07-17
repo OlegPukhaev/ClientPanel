@@ -10,9 +10,11 @@ import Dashboard from "./components/layout/DashBoard";
 import AddClient from "./components/clients/AddClient";
 import EditClient from "./components/clients/EditClient";
 import ClientDetails from "./components/clients/ClientDetails";
+import Kazan from "./components/pages/Kazan";
 import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
-import Settings from "./components/settings/Settings";
+// import Register from "./components/auth/Register";
+// import Settings from "./components/settings/Settings";
+import ContactForm from "./components/clients/ContactForm";
 
 import "./App.css";
 
@@ -51,13 +53,23 @@ function App() {
               />
               <Route
                 exact
-                path="/register"
-                component={UserIsNotAuthenticated(Register)}
+                path="/contact/send"
+                component={ContactForm}
               />
               <Route
                 exact
-                path="/settings"
-                component={UserIsAuthenticated(Settings)}
+                path="/kazan"
+                component={Kazan}
+              />
+              {/* <Route
+                exact
+                path="/register"
+                component={UserIsNotAuthenticated(Register)}
+              /> */}
+              <Route
+                exact
+                path="/"
+                component={UserIsAuthenticated(Dashboard)}
               />
             </Switch>
           </div>
