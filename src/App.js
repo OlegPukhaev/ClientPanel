@@ -49,11 +49,11 @@ function App() {
                 path="/login"
                 component={UserIsNotAuthenticated(Login)}
               />
-              <Route
+              {/* <Route
                 exact
                 path="/register"
                 component={UserIsNotAuthenticated(Register)}
-              />
+              /> */}
               <Route
                 exact
                 path="/"

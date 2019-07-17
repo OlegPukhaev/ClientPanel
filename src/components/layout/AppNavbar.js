@@ -89,11 +89,11 @@ class AppNavbar extends Component {
                       Login
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link to="/Register" className="nav-link">
                       Register
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               ) : null
 
